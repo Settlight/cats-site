@@ -23,11 +23,9 @@ const BreedList = () => {
         setCatImage(null);
 
         try {
-            // Перший запит за breed id
             let res = await fetch(`https://api.thecatapi.com/v1/images/search?breed_ids=${cat.id}`);
             let data = await res.json();
 
-            // Якщо фото немає — fallback-запит
             if (!data.length || !data[0].url) {
                 res = await fetch(`https://api.thecatapi.com/v1/images/search?limit=1`);
                 data = await res.json();
